@@ -1,0 +1,37 @@
+{
+  "presets": [
+    "es2015",
+    "react",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+    ["emotion",
+      {
+        "hoist": false,
+        "sourceMap": false,
+        "autoLabel": false,
+        "labelFormat": "[local]",
+        "extractStatic": true,
+//        "outputDir": '',
+        "importedNames": {
+          "styled": "styled",
+          "css": "css",
+          "keyframes": "keyframes",
+          "injectGlobal": "injectGlobal",
+          "merge": "merge"
+        }
+      }]
+  ],
+  "env":{
+    "development":{
+      "plugins":[["react-transform", {
+        "transforms": [{
+          "transform": "react-transform-hmr",
+          "imports": ["react"],
+          "locals": ["module"]
+        }]
+      }]]
+    }
+  }
+}

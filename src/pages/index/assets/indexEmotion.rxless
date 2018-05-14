@@ -1,0 +1,7 @@
+.myStyle1{
+  color: rebeccapurple;
+}
+.Container1{
+  background: #ccc;
+  display:inline-block;
+}
