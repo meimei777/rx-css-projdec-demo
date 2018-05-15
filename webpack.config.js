@@ -8,6 +8,7 @@ var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlug
 
 var config = {
     entry: {
+        maincss: ['./src/pages/index/assets/main.less'],
         index: ['./src/pages/index/boot-loader.jsx'],
         common: ['react', 'react-dom'],
     },
@@ -31,16 +32,17 @@ var config = {
     module: {
         rules: [
             {
+                test: /\.less$/,
+                loader: 'stylesheet-loader!less-loader'
+            },
+            {
                 test: /\.(es6|js|jsx)$/,
                 exclude: /node_modules(?!\/webpack-dev-server)/,
                 use: [{loader: 'babel-loader'}]
             },
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: ['css-loader'],
-                })
+                loader: 'stylesheet-loader'
             },
             {
                 test: /\.js$/,
@@ -78,15 +80,11 @@ var config = {
                     ]
                 })
             }
-        ],
-        loaders: [{
-            test: /\.rxless$/,
-            loader: 'rx-css-loader!less-loader'
-        }]
+        ]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['common', "manifest"],
+            names: ['maincss', 'common', "manifest"],
             filename: `[name].js`,
             minChunks: Infinity
         }),
@@ -102,7 +100,7 @@ var config = {
             sourceMap: true
         }),
         new HtmlWebpackPlugin({
-            chunks: ["manifest", 'common', 'index'],
+            chunks: ["maincss", "manifest", 'common', 'index'],
             filename: `index.html`,
             template:'./template.html'
         }),

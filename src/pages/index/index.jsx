@@ -2,7 +2,7 @@ import React        from 'react';
 import ReactDOM     from 'react-dom';
 import { Provider } from './context/';
 
-import style from './assets/indexEmotion.rxless';
+import style from './assets/main.less';
 
 console.log('style111',style);
 
