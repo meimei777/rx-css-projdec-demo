@@ -12,7 +12,7 @@
         "sourceMap": false,
         "autoLabel": false,
         "labelFormat": "[local]",
-        "extractStatic": true,
+        "extractStatic": false,
 //        "outputDir": '',
         "importedNames": {
           "styled": "styled",

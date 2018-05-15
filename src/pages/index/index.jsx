@@ -2,9 +2,14 @@ import React        from 'react';
 import ReactDOM     from 'react-dom';
 import { Provider } from './context/';
 
-import style from './assets/indexEmotion.rxless';
+import style from './assets/indexEmotion.less.module';
+import style2 from './assets/indexEmotion.sless';
+import Transfer from './assets/utils';
 
-console.log('style111',style);
+const styles=Transfer(style2);
+
+
+console.log('styles',styles);
 
 
 
@@ -25,6 +30,14 @@ export default class TodoRoot extends React.Component {
     render() {
         return (
             <Provider value={this.state}>
+                <div className={style.myStyle}></div>
+                <div className={style.Container}></div>
+
+
+                <div className={styles.myStyle}></div>
+                <div className={styles.Container}></div>
+
+
                 {/*<Style.Container1>
                     <p className={Style.myStyle1}>emotion</p>
                 </Style.Container1>*/}

@@ -47,21 +47,25 @@ var config = {
                 use: ['source-map-loader'],
                 enforce: 'pre',
             },
-            // {
-            //     test: /\.less$/,
-            //     use: ExtractTextPlugin.extract({
-            //         fallback: 'style-loader',
-            //         use: [
-            //             'css-loader',
-            //             {
-            //                 loader: "less-loader",
-            //                 options: {
-            //                     javascriptEnabled: true
-            //                 }
-            //             },
-            //         ]
-            //     })
-            // },
+            {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [
+                        'css-loader',
+                        {
+                            loader: "less-loader",
+                            options: {
+                                javascriptEnabled: true
+                            }
+                        },
+                    ]
+                })
+            },
+            {
+                test: /\.sless$/,
+                loader: 'stylesheet-loader'
+            },
             {
                 test: /\.less\.module$/,
                 use: ExtractTextPlugin.extract({
@@ -79,10 +83,6 @@ var config = {
                 })
             }
         ],
-        loaders: [{
-            test: /\.rxless$/,
-            loader: 'rx-css-loader!less-loader'
-        }]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({

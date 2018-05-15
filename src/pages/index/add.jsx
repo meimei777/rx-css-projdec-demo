@@ -1,5 +1,8 @@
 import React        from 'react';
-import * as Style from './assets/addEmotion';
+import style2 from './assets/addEmotion.sless';
+import Transfer from './assets/utils';
+
+const styles=Transfer(style2);
 
 
 
@@ -7,9 +10,9 @@ export default class Add extends React.Component {
 
     render() {
         return (
-            <Style.Container>
-                <p className={Style.myStyle}>Hello World</p>
-            </Style.Container>
+            <div>
+                <p className={styles.a}>Hello World</p>
+            </div>
         );
     }
 }
